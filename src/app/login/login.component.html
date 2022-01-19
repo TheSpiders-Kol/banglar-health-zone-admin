@@ -1,18 +1,37 @@
-<main class="form-signin">
-  <form>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Mobile Number</label>
+<div class="container-fluid m-0 p-0 mainContainerBackground">
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <div class="container">
+        <div class="row d-flex justify-content-center my-5">
+          <div class="col-6 secondaryContainerBackground p-4">
+            <h1 class="h3 mb-4 mainHeader"><i class="fas fa-sign-in-alt"></i> Please Sign In</h1>
+            <form [formGroup]="signInForm" (ngSubmit)="formSubmit()">
+              <div class="form-group mb-3">
+                <label for="inputMobileNumber" class="form-label">Mobile Number</label>
+                <input [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched" type="tel" formControlName="mobileNumber" class="form-control" id="inputMobileNumber" placeholder="Enter your mobile number">
+                <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
+                  <small *ngIf="mobileNumber.errors?.required" class="text-danger">Mobile number is required</small>
+                  <small *ngIf="mobileNumber.errors?.minlength" class="text-danger">Mobile number must be of 10 digits</small>
+                  <small *ngIf="mobileNumber.errors?.maxlength" class="text-danger">Mobile number must be of 10 digits</small>
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="inputOtp" class="form-label">OTP</label>
+                <input [class.is-invalid]="otp.invalid && otp.touched" type="text" formControlName="otp" class="form-control" id="inputOtp" placeholder="Enter your OTP">
+                <div *ngIf="otp.invalid && otp.touched">
+                  <small *ngIf="otp.errors?.required" class="text-danger">OTP is required</small>
+                  <small *ngIf="otp.errors?.minlength" class="text-danger">OTP must be of 6 digits</small>
+                  <small *ngIf="otp.errors?.maxlength" class="text-danger">OTP must be of 6 digits</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <a routerLink="/">Forgot Password?</a>
+              </div>
+              <button [disabled]="!signInForm.valid" type="submit" class="btn btn-primary text-uppercase">Sign in</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
-    <div class="mb-3">
-      <a routerLink="/" routerLinkActive="active">Forgot Password?</a>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-  </form>
-</main>
+  </div>
+</div>

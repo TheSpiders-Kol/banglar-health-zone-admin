@@ -1,69 +1,77 @@
-<div id="about-us-middle-section" class="container">
-  <div class="row">
-      <div class="col-12">
-          <div id="search" class="card bg-light shadow rounded p-3 mb-5">
-              <div class="card-header cardHeader"><h3 class="mb-0"><i class="fas fa-search"></i> Search Users</h3></div>
-              <div class="card-body cardBody">
-                  <div class="container-fluid mt-3 cardBodyPadding">
-                      <form style="font-family: 'Lato', sans-serif; font-size: 14px;">
-                          <div class="form-row form-group" >
-                              <label class="col-lg-3">Mobile: </label>
-                              <input type="text" class="form-control col-lg-7" style="font-family: 'Roboto', sans-serif; font-size: 12px;" formControlName="mobile" id="inputMobile" placeholder="Type Mobile No.">
-                          </div>
-                          <div class="form-row form-group mb-3" >
-                              <label for="inputEmail" class="col-lg-3">Email: </label>
-                              <input type="text" class="form-control col-lg-7" style="font-family: 'Roboto', sans-serif; font-size: 12px;" formControlName="email" id="inputEmail" placeholder="Type Email" >
-                          </div>
-                          <div class="form-row form-group" >
-                            <button type="submit" class="btn col-lg-2 mb-3 btn-primary">SEARCH</button>
-                            <button type="reset" class="btn col-lg-2 mb-3" style="background-color: #dc3545; color: #ffffff;">CLEAR</button>
-                          </div>
-                      </form>
-                      <hr>
-                      <div class="table-responsive">
-                          <table class="table table-striped table-bordered mb-5" style="width:100%">
-                              <thead class="tableHead">
-                                  <tr>
-                                      <th>Sl No</th>
-                                      <th>Name</th>
-                                      <th>Mobile</th>
-                                      <th>Email</th>
-                                      <th>Action</th>
-
-                                  </tr>
-                              </thead>
-
-                              <tbody class="tableBody">
-                                  <tr>
-                                      <td>1</td>
-                                      <td>Aranya Banik</td>
-                                      <td>9123456789</td>
-                                      <td>
-                                          <a href="mailto:{{'a@a.com'}}" style="font-family: 'Roboto', sans-serif; font-size: 12px;">
-                                              {{'a@a.com'}}
-                                          </a>
-                                      </td>
-                                      <td class="text-center">
-                                          <div class="btn-group">
-                                              <button data-toggle="dropdown" type="button"><i class="fa fa-bars"></i></button>
-                                              <div class="dropdown-menu">
-                                                  <a class="dropdown-item anchorTagPadding" (click)="goToEditUser()" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Edit User</h6></a>
-                                                  <a class="dropdown-item anchorTagPadding" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Manage Markup</h6></a>
-                                                  <a class="dropdown-item anchorTagPadding" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Change Password</h6></a>
-                                                  <a class="dropdown-item anchorTagPadding" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Manage Wallet</h6></a>
-                                                  <a class="dropdown-item anchorTagPadding" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Booking History</h6></a>
-                                                  <a class="dropdown-item anchorTagPadding" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Enable</h6></a>
-                                                  <a class="dropdown-item anchorTagPadding" routerLinkActive="" style="cursor: pointer;"><h6 class="small">Disable</h6></a>
-                                              </div>
-                                          </div>
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div class="container-fluid m-0 p-0 mainContainerBackground">
+    <div class="row m-0 p-0">
+        <div class="col-12 m-0 p-0">
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-12 secondaryContainerBackground p-4">
+                        <h1 class="h3 mb-4 mainHeader"><i class="fas fa-search"></i> Search Users</h1>
+                        <form [formGroup]="searchUserForm" (ngSubmit)="formSubmit()">
+                            <div class="form-group mb-3">
+                              <label for="inputName" class="form-label">User Name</label>
+                              <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter user name">
+                              <div *ngIf="name.invalid && name.touched">
+                                <small *ngIf="name.errors?.required" class="text-danger">Name is required</small>
+                              </div>
+                            </div>
+                            <div class="form-group mb-3">
+                              <label for="inputMobileNumber" class="form-label">Mobile Number</label>
+                              <input [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched" type="tel" formControlName="mobileNumber" class="form-control" id="inputMobileNumber" placeholder="Enter user's mobile number">
+                              <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
+                                <small *ngIf="mobileNumber.errors?.required" class="text-danger">Mobile number is required</small>
+                                <small *ngIf="mobileNumber.errors?.minlength" class="text-danger">Mobile number must be of 10 digits</small>
+                                <small *ngIf="mobileNumber.errors?.maxlength" class="text-danger">Mobile number must be of 10 digits</small>
+                              </div>
+                            </div>
+                            <button [disabled]="!searchUserForm.valid" type="submit" class="btn btn-primary text-uppercase">Search</button>
+                            <button type="reset" class="btn btn-secondary ms-2" (click)="onClear()">CLEAR</button>
+                          </form>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-12 secondaryContainerBackground p-4">
+                        <h1 class="h3 mb-4 mainHeader"><i class="fas fa-users"></i> User List</h1>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="tableHead">
+                                    <tr>
+                                        <th>Sl No</th>
+                                        <th>Name</th>
+                                        <th>Mobile Number</th>
+                                        <th>Subscription Status</th>
+                                        <th>Manage Subscription</th>
+        
+                                    </tr>
+                                </thead>
+        
+                                <tbody class="tableBody">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Aranya Banik</td>
+                                        <td>9123456789</td>
+                                        <td>{{subscriptionStatus}}</td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
+                                                    <i class="fa fa-bars"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item anchorTagPadding" (click)="goToEditUser()"><h6 class="small">Edit User</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Manage Markup</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Change Password</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Manage Wallet</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Booking History</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Enable</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Disable</h6></a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
