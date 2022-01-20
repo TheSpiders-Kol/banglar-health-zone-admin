@@ -9,6 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageHospitalsComponent } from './manage-hospitals/manage-hospitals.component';
+import { AddHospitalComponent } from './add-hospital/add-hospital.component';
+import { UpdateHospitalComponent } from './update-hospital/update-hospital.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ManageHospitalsComponent } from './manage-hospitals/manage-hospitals.co
     HeaderComponent,
     FooterComponent,
     ManageUserComponent,
-    ManageHospitalsComponent
+    ManageHospitalsComponent,
+    AddHospitalComponent,
+    UpdateHospitalComponent
   ],
   imports: [
     BrowserModule,
