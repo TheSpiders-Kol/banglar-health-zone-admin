@@ -38,4 +38,5 @@ export class ManageUserComponent implements OnInit {
   }
 
   goToEditUser(){};
+
 }
