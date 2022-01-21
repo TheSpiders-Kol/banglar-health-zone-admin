@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-manage-hospitals',
-  templateUrl: './manage-hospitals.component.html',
-  styleUrls: ['./manage-hospitals.component.scss']
+  selector: 'app-manage-hospital',
+  templateUrl: './manage-hospital.component.html',
+  styleUrls: ['./manage-hospital.component.scss']
 })
-export class ManageHospitalsComponent implements OnInit {
+export class ManageHospitalComponent implements OnInit {
 
   public searchHospitalForm: FormGroup;
 

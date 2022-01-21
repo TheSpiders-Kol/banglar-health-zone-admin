@@ -10,7 +10,7 @@
                               <label for="inputName" class="form-label">Hospital Name</label>
                               <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter hospital name">
                               <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.required" class="text-danger">Hospital name is required</small>
+                                <small *ngIf="name.errors?.['required']" class="text-danger">Hospital name is required</small>
                               </div>
                             </div>
                             <div class="form-group mb-3">
@@ -41,7 +41,7 @@
                                 <option>Uttar Dinajpur</option>
                               </select>
                               <div *ngIf="district.invalid && district.touched">
-                                <small *ngIf="district.errors?.required" class="text-danger">You must select district</small>
+                                <small *ngIf="district.errors?.['required']" class="text-danger">You must select district</small>
                               </div>
                             </div>
                             <button [disabled]="!searchHospitalForm.valid" type="submit" class="btn btn-primary text-uppercase">Search</button>

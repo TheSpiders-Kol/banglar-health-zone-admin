@@ -10,28 +10,28 @@
                               <label for="inputHospitalName" class="form-label">Hospital Name</label>
                               <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputHospitalName" placeholder="Enter hospital name">
                               <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.required" class="text-danger">Hospital name is required</small>
+                                <small *ngIf="name.errors?.['required']" class="text-danger">Hospital name is required</small>
                               </div>
                             </div>
                             <div class="col-md-3">
                               <label for="inputContactNumber" class="form-label">Contact Number</label>
                               <input [class.is-invalid]="contactNumber.invalid && contactNumber.touched" type="tel" formControlName="contactNumber" class="form-control" id="inputContactNumber" placeholder="Enter contact number">
                               <div *ngIf="contactNumber.invalid && contactNumber.touched">
-                                <small *ngIf="contactNumber.errors?.required" class="text-danger">Contact number is required</small>
+                                <small *ngIf="contactNumber.errors?.['required']" class="text-danger">Contact number is required</small>
                               </div>
                             </div>
                             <div class="col-md-3">
                                 <label for="inputEmail" class="form-label">Email</label>
                                 <input [class.is-invalid]="registeredEmail.invalid && registeredEmail.touched" type="email" formControlName="registeredEmail" class="form-control" id="inputEmail" placeholder="Enter registered email id">
                                 <div *ngIf="registeredEmail.invalid && registeredEmail.touched">
-                                    <small *ngIf="registeredEmail.errors?.required" class="text-danger">Email id is required</small>
+                                    <small *ngIf="registeredEmail.errors?.['required']" class="text-danger">Email id is required</small>
                                 </div>
                             </div>
                             <div class="col-12">
                               <label for="inputAddress" class="form-label">Address</label>
                               <input [class.is-invalid]="address.invalid && address.touched" type="text" formControlName="address" class="form-control" id="inputAddress" placeholder="Enter hospital address">
                               <div *ngIf="address.invalid && address.touched">
-                                <small *ngIf="address.errors?.required" class="text-danger">Address is required</small>
+                                <small *ngIf="address.errors?.['required']" class="text-danger">Address is required</small>
                               </div>
                             </div>
                             <div class="col-md-6">
@@ -62,35 +62,35 @@
                                 <option>Uttar Dinajpur</option>
                               </select>
                               <div *ngIf="district.invalid && district.touched">
-                                <small *ngIf="district.errors?.required" class="text-danger">You must select district</small>
+                                <small *ngIf="district.errors?.['required']" class="text-danger">You must select district</small>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <label for="inputPinCode" class="form-label">Pin Code</label>
                               <input [class.is-invalid]="districtCode.invalid && districtCode.touched" type="text" formControlName="districtCode" class="form-control" id="inputPinCode" placeholder="Enter pin code">
                               <div *ngIf="districtCode.invalid && districtCode.touched">
-                                <small *ngIf="districtCode.errors?.required" class="text-danger">Pincode is required</small>
+                                <small *ngIf="districtCode.errors?.['required']" class="text-danger">Pincode is required</small>
                               </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputHouseDoctors" class="form-label">House Doctors</label>
                                 <input [class.is-invalid]="noOfHouseDoctors.invalid && noOfHouseDoctors.touched" type="number" formControlName="noOfHouseDoctors" class="form-control" id="inputHouseDoctors" placeholder="Enter number of house doctors">
                                 <div *ngIf="noOfHouseDoctors.invalid && noOfHouseDoctors.touched">
-                                    <small *ngIf="noOfHouseDoctors.errors?.required" class="text-danger">No of house doctors is required</small>
+                                    <small *ngIf="noOfHouseDoctors.errors?.['required']" class="text-danger">No of house doctors is required</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputVisitingConsultant" class="form-label">Visiting Consulatnt</label>
                                 <input [class.is-invalid]="noOfVisitingConsultant.invalid && noOfVisitingConsultant.touched" type="number" formControlName="noOfVisitingConsultant" class="form-control" id="inputVisitingConsultant" placeholder="Enter number of visiting consultant">
                                 <div *ngIf="noOfVisitingConsultant.invalid && noOfVisitingConsultant.touched">
-                                    <small *ngIf="noOfVisitingConsultant.errors?.required" class="text-danger">No of visiting consultant is required</small>
+                                    <small *ngIf="noOfVisitingConsultant.errors?.['required']" class="text-danger">No of visiting consultant is required</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <label for="inputBedStrength" class="form-label">Bed Strength</label>
                                 <input [class.is-invalid]="sanctionedBedStrength.invalid && sanctionedBedStrength.touched" type="number" formControlName="sanctionedBedStrength" class="form-control" id="inputBedStrength" placeholder="Enter sanctioned bed strength">
                                 <div *ngIf="sanctionedBedStrength.invalid && sanctionedBedStrength.touched">
-                                    <small *ngIf="sanctionedBedStrength.errors?.required" class="text-danger">Sanctioned bed strength is required</small>
+                                    <small *ngIf="sanctionedBedStrength.errors?.['required']" class="text-danger">Sanctioned bed strength is required</small>
                                 </div>
                             </div>
                             <div class="col-12">

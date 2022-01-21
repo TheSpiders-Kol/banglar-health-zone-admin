@@ -10,16 +10,16 @@
                               <label for="inputName" class="form-label">User Name</label>
                               <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter user name">
                               <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.required" class="text-danger">Name is required</small>
+                                <small *ngIf="name.errors?.['required']" class="text-danger">Name is required</small>
                               </div>
                             </div>
                             <div class="form-group mb-3">
                               <label for="inputMobileNumber" class="form-label">Mobile Number</label>
                               <input [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched" type="tel" formControlName="mobileNumber" class="form-control" id="inputMobileNumber" placeholder="Enter user's mobile number">
                               <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
-                                <small *ngIf="mobileNumber.errors?.required" class="text-danger">Mobile number is required</small>
-                                <small *ngIf="mobileNumber.errors?.minlength" class="text-danger">Mobile number must be of 10 digits</small>
-                                <small *ngIf="mobileNumber.errors?.maxlength" class="text-danger">Mobile number must be of 10 digits</small>
+                                <small *ngIf="mobileNumber.errors?.['required']" class="text-danger">Mobile number is required</small>
+                                <small *ngIf="mobileNumber.errors?.['minlength']" class="text-danger">Mobile number must be of 10 digits</small>
+                                <small *ngIf="mobileNumber.errors?.['maxlength']" class="text-danger">Mobile number must be of 10 digits</small>
                               </div>
                             </div>
                             <button [disabled]="!searchUserForm.valid" type="submit" class="btn btn-primary text-uppercase">Search</button>
