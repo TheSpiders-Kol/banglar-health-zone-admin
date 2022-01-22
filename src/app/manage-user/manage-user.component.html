@@ -36,8 +36,17 @@
                                     <tr>
                                         <th>Sl No</th>
                                         <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Subscription Status</th>
+                                        <th>Username</th>
+                                        <th>Mobile</th>
+                                        <th>Email</th>
+                                        <th>Address1</th>
+                                        <th>Address2</th>
+                                        <th>City/Town</th>
+                                        <th>District</th>
+                                        <th>Pincode</th>
+                                        <th>Subscription</th>
+                                        <th>Enabled</th>
+                                        <th>Trial</th>
                                         <th>Manage Subscription</th>
         
                                     </tr>
@@ -47,21 +56,24 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Aranya Banik</td>
+                                        <td>Aranya_Banik</td>
                                         <td>9123456789</td>
-                                        <td>{{subscriptionStatus}}</td>
+                                        <td>abcd@gmail.com</td>
+                                        <td>121/51</td>
+                                        <td>DH Road</td>
+                                        <td>Kolkata</td>
+                                        <td>South 24 Parganas</td>
+                                        <td>700063</td>
+                                        <td>26/03/2022</td>
+                                        <td>Yes</td>
+                                        <td>No</td>
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
                                                     <i class="fa fa-bars"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item anchorTagPadding" (click)="goToEditUser()"><h6 class="small">Edit User</h6></a></li>
-                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Manage Markup</h6></a></li>
-                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Change Password</h6></a></li>
-                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Manage Wallet</h6></a></li>
-                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Booking History</h6></a></li>
-                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Enable</h6></a></li>
-                                                    <li><a class="dropdown-item anchorTagPadding" routerLinkActive=""><h6 class="small">Disable</h6></a></li>
+                                                    <li><a class="dropdown-item anchorTagPadding" (click)="editUser()"><h6 class="small">Edit User</h6></a></li>
                                                 </ul>
                                             </div>
                                         </td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-hospital',
@@ -18,7 +19,7 @@ export class ManageHospitalComponent implements OnInit {
     return this.searchHospitalForm.controls['district'];
   }
 
-  constructor(private _formBuilder : FormBuilder) {
+  constructor(private _formBuilder : FormBuilder, private _router: Router) {
     this.searchHospitalForm = _formBuilder.group({
       'name' : ['', [Validators.required]],
       'district': ['', [Validators.required]]
@@ -36,6 +37,8 @@ export class ManageHospitalComponent implements OnInit {
 
   }
 
-  goToEditHospital(){};
+  editHospital(){
+    this._router.navigate(['editHospital'])
+  }
 
 }

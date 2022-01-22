@@ -1,0 +1,57 @@
+<div class="container-fluid m-0 p-0 mainContainerBackground">
+    <div class="row m-0 p-0">
+        <div class="col-12 m-0 p-0">
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-12 secondaryContainerBackground p-4">
+                        <h1 class="h3 mb-4 mainHeader"><i class="fas fa-plus"></i> Add Insurance Company</h1>
+                        <form [formGroup]="addInsuranceCompanyForm" (ngSubmit)="formSubmit()">
+                            <div class="form-group mb-3">
+                              <label for="inputName" class="form-label">Insurance Company</label>
+                              <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter insurance company">
+                              <div *ngIf="name.invalid && name.touched">
+                                <small *ngIf="name.errors?.['required']" class="text-danger">Insurance company name is required</small>
+                              </div>
+                            </div>
+                            <button [disabled]="!addInsuranceCompanyForm.valid" type="submit" class="btn btn-primary text-uppercase">Add Insurance Company</button>
+                          </form>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-12 secondaryContainerBackground p-4">
+                        <h1 class="h3 mb-4 mainHeader"><i class="fas fa-heartbeat"></i> Insurance Company List</h1>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="tableHead">
+                                    <tr>
+                                        <th>Sl</th>
+                                        <th>Insurance Company Name</th>
+                                        <th>Edit</th>
+        
+                                    </tr>
+                                </thead>
+        
+                                <tbody class="tableBody">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Star Health</td>
+                                        <td class="text-center">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
+                                                    <i class="fa fa-bars"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item anchorTagPadding" (click)="addInsuranceCompany()"><h6 class="small">Edit Company</h6></a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
