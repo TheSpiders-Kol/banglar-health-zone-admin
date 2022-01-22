@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-user',
@@ -9,7 +10,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ManageUserComponent implements OnInit {
 
   public searchUserForm: FormGroup;
-  public subscriptionStatus: string = 'Active';
 
   get name() {
     return this.searchUserForm.controls['name'];
@@ -19,7 +19,7 @@ export class ManageUserComponent implements OnInit {
     return this.searchUserForm.controls['mobileNumber'];
   }
 
-  constructor(private _formBuilder : FormBuilder) {
+  constructor(private _formBuilder : FormBuilder, private _router: Router) {
     this.searchUserForm = _formBuilder.group({
       'name' : ['', [Validators.required]],
       'mobileNumber': ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
@@ -37,6 +37,8 @@ export class ManageUserComponent implements OnInit {
 
   }
 
-  goToEditUser(){};
+  editUser(){
+    this._router.navigate(['editUser'])
+  }
 
 }

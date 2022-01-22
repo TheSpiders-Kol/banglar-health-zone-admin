@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -10,7 +11,13 @@ import { LoginComponent } from './login/login.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageHospitalComponent } from './manage-hospital/manage-hospital.component';
 import { AddHospitalComponent } from './add-hospital/add-hospital.component';
-import { UpdateHospitalComponent } from './update-hospital/update-hospital.component';
+import { EditHospitalComponent } from './edit-hospital/edit-hospital.component';
+import { HealthServicesComponent } from './health-services/health-services.component';
+import { InsuranceCompaniesComponent } from './insurance-companies/insurance-companies.component';
+import { EditHealthServiceComponent } from './edit-health-service/edit-health-service.component';
+import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +28,19 @@ import { UpdateHospitalComponent } from './update-hospital/update-hospital.compo
     ManageUserComponent,
     ManageHospitalComponent,
     AddHospitalComponent,
-    UpdateHospitalComponent
+    EditHospitalComponent,
+    HealthServicesComponent,
+    InsuranceCompaniesComponent,
+    EditHealthServiceComponent,
+    EditInsuranceCompanyComponent,
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
