@@ -5,29 +5,25 @@
           <div class="row d-flex justify-content-center my-5">
             <div class="col-12 secondaryContainerBackground p-4">
               <h1 class="h3 mb-4 mainHeader"><i class="fas fa-sign-in-alt"></i> Please Sign In</h1>
-              <form [formGroup]="signInForm" (ngSubmit)="formSubmit()">
+              <form [formGroup]="signInForm" (ngSubmit)="login()">
                 <div class="form-group mb-3">
-                  <label for="inputMobileNumber" class="form-label">Mobile Number</label>
-                  <input [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched" type="tel" formControlName="mobileNumber" class="form-control" id="inputMobileNumber" placeholder="Enter your mobile number">
-                  <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
-                    <small *ngIf="mobileNumber.errors?.['required']" class="text-danger">Mobile number is required</small>
-                    <small *ngIf="mobileNumber.errors?.['minlength']" class="text-danger">Mobile number must be of 10 digits</small>
-                    <small *ngIf="mobileNumber.errors?.['maxlength']" class="text-danger">Mobile number must be of 10 digits</small>
+                  <label for="inputUserName" class="form-label">User Name</label>
+                  <input [class.is-invalid]="userName.invalid && userName.touched" type="string" formControlName="userName" class="form-control" id="inputUserName" placeholder="Enter User Name">
+                  <div *ngIf="userName.invalid && userName.touched">
+                    <small *ngIf="userName.errors?.['required']" class="text-danger">User Name is required</small>
                   </div>
                 </div>
                 <div class="form-group mb-3">
-                  <label for="inputOtp" class="form-label">OTP</label>
-                  <input [class.is-invalid]="otp.invalid && otp.touched" type="text" formControlName="otp" class="form-control" id="inputOtp" placeholder="Enter your OTP">
-                  <div *ngIf="otp.invalid && otp.touched">
-                    <small *ngIf="otp.errors?.['required']" class="text-danger">OTP is required</small>
-                    <small *ngIf="otp.errors?.['minlength']" class="text-danger">OTP must be of 6 digits</small>
-                    <small *ngIf="otp.errors?.['maxlength']" class="text-danger">OTP must be of 6 digits</small>
+                  <label for="inputPassword" class="form-label">Password</label>
+                  <input [class.is-invalid]="password.invalid && password.touched" type="text" formControlName="password" class="form-control" id="inputPassword" placeholder="Enter your Password">
+                  <div *ngIf="password.invalid && password.touched">
+                    <small *ngIf="password.errors?.['required']" class="text-danger">Password is required</small>
                   </div>
                 </div>
                 <div class="mb-3">
                   <a routerLink="/">Forgot Password?</a>
                 </div>
-                <button [disabled]="!signInForm.valid" type="submit" class="btn btn-primary text-uppercase">Sign in</button>
+                <button [disabled]="!signInForm.valid" type="submit" class="btn btn-primary text-uppercase" (click)="login()">Sign in</button>
               </form>
             </div>
           </div>
@@ -35,3 +31,4 @@
       </div>
     </div>
   </div>
+  <app-snackbar></app-snackbar>

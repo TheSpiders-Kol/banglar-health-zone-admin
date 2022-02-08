@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseURL : 'http://162.214.113.163:8080',
+  apiClient: 'hzoneapiclient',
+  apiSecret: 'secret'
 };
 
 /*

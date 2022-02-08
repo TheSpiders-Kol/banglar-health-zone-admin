@@ -1,89 +1,96 @@
 <div class="container-fluid m-0 p-0 mainContainerBackground">
-    <div class="row m-0 p-0">
-        <div class="col-12 m-0 p-0">
-            <div class="container">
-                <div class="row my-5">
-                    <div class="col-12 secondaryContainerBackground p-4">
-                        <h1 class="h3 mb-4 mainHeader"><i class="fas fa-search"></i> Search Users</h1>
-                        <form [formGroup]="searchUserForm" (ngSubmit)="formSubmit()">
-                            <div class="form-group mb-3">
-                              <label for="inputName" class="form-label">User Name</label>
-                              <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter user name">
-                              <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.['required']" class="text-danger">Name is required</small>
-                              </div>
-                            </div>
-                            <div class="form-group mb-3">
-                              <label for="inputMobileNumber" class="form-label">Mobile Number</label>
-                              <input [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched" type="tel" formControlName="mobileNumber" class="form-control" id="inputMobileNumber" placeholder="Enter user's mobile number">
-                              <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
-                                <small *ngIf="mobileNumber.errors?.['required']" class="text-danger">Mobile number is required</small>
-                                <small *ngIf="mobileNumber.errors?.['minlength']" class="text-danger">Mobile number must be of 10 digits</small>
-                                <small *ngIf="mobileNumber.errors?.['maxlength']" class="text-danger">Mobile number must be of 10 digits</small>
-                              </div>
-                            </div>
-                            <button [disabled]="!searchUserForm.valid" type="submit" class="btn btn-primary text-uppercase">Search</button>
-                            <button type="reset" class="btn btn-secondary ms-2" (click)="onClear()">CLEAR</button>
-                          </form>
-                    </div>
+  <div class="row m-0 p-0">
+    <div class="col-12 m-0 p-0">
+      <div class="container">
+        <div class="row my-5">
+          <h1>Manage User</h1>
+          <div class="col-12 secondaryContainerBackground p-4">
+            <h1 class="h3 mb-4 mainHeader"><i class="fas fa-search"></i> Search Users</h1>
+            <form [formGroup]="searchUserForm" (ngSubmit)="formSubmit()">
+              <div class="form-group mb-3">
+                <label for="inputName" class="form-label">User Name</label>
+                <input type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter user name">
+              </div>
+              <div class="form-group mb-3">
+                <label for="inputMobileNumber" class="form-label">Mobile Number</label>
+                <input [class.is-invalid]="mobileNumber.invalid && mobileNumber.touched" type="tel" formControlName="mobileNumber" class="form-control" id="inputMobileNumber" placeholder="Enter user's mobile number">
+                <div *ngIf="mobileNumber.invalid && mobileNumber.touched">
+                  <small *ngIf="mobileNumber.errors?.['minlength']" class="text-danger">Mobile number must be of 10 digits</small>
+                  <small *ngIf="mobileNumber.errors?.['maxlength']" class="text-danger">Mobile number must be of 10 digits</small>
                 </div>
-                <div class="row mb-5">
-                    <div class="col-12 secondaryContainerBackground p-4">
-                        <h1 class="h3 mb-4 mainHeader"><i class="fas fa-users"></i> User List</h1>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered">
-                                <thead class="tableHead">
-                                    <tr>
-                                        <th>Sl No</th>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Mobile</th>
-                                        <th>Email</th>
-                                        <th>Address1</th>
-                                        <th>Address2</th>
-                                        <th>City/Town</th>
-                                        <th>District</th>
-                                        <th>Pincode</th>
-                                        <th>Subscription</th>
-                                        <th>Enabled</th>
-                                        <th>Trial</th>
-                                        <th>Manage Subscription</th>
-        
-                                    </tr>
-                                </thead>
-        
-                                <tbody class="tableBody">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Aranya Banik</td>
-                                        <td>Aranya_Banik</td>
-                                        <td>9123456789</td>
-                                        <td>abcd@gmail.com</td>
-                                        <td>121/51</td>
-                                        <td>DH Road</td>
-                                        <td>Kolkata</td>
-                                        <td>South 24 Parganas</td>
-                                        <td>700063</td>
-                                        <td>26/03/2022</td>
-                                        <td>Yes</td>
-                                        <td>No</td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
-                                                    <i class="fa fa-bars"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item anchorTagPadding" (click)="editUser()"><h6 class="small">Edit User</h6></a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" formControlName="email" class="form-control" id="email" placeholder="Enter email id">
+              </div>
+              <div class="form-group mb-3">
+                <label for="subscription" class="form-label">Subscription Status</label>
+                <select formControlName="subscription" class="form-control" id="subscription">
+                  <option value="false">Active Users</option>
+                  <option value="true">Expired Users</option>
+                </select>
+              </div>
+              <button [disabled]="!searchUserForm.valid" type="submit" class="btn btn-primary text-uppercase">Search</button>
+              <button type="reset" class="btn btn-secondary ms-2" (click)="onClear()">CLEAR</button>
+            </form>
+          </div>
         </div>
+        <div class="row mb-5">
+          <div class="col-12 secondaryContainerBackground p-4">
+            <h1 class="h3 mb-4 mainHeader"><i class="fas fa-users"></i> User List</h1>
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead class="tableHead">
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Address1</th>
+                        <th>Address2</th>
+                        <th>City/Town</th>
+                        <th>District</th>
+                        <th>Pincode</th>
+                        <th>Subscription</th>
+                        <th>Enabled</th>
+                        <th>Trial</th>
+                        <th>Manage Subscription</th>
+
+                    </tr>
+                </thead>
+                <tbody class="tableBody">
+                  <tr>
+                    <td>1</td>
+                    <td>Aranya Banik</td>
+                    <td>Aranya_Banik</td>
+                    <td>9123456789</td>
+                    <td>abcd@gmail.com</td>
+                    <td>121/51</td>
+                    <td>DH Road</td>
+                    <td>Kolkata</td>
+                    <td>South 24 Parganas</td>
+                    <td>700063</td>
+                    <td>26/03/2022</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                    <td class="text-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
+                          <i class="fa fa-bars"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item anchorTagPadding" (click)="editUser()"><h6 class="small">Edit User</h6></a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

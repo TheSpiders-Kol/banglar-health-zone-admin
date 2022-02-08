@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +18,7 @@ import { EditHealthServiceComponent } from './edit-health-service/edit-health-se
 import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { Snackbar } from './snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -34,13 +35,15 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     EditHealthServiceComponent,
     EditInsuranceCompanyComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    Snackbar
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

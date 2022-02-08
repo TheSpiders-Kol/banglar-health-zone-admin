@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { JsonConvert } from 'json2typescript';
+import { UserService } from '../user.service';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-manage-user',
@@ -10,6 +13,8 @@ import { Router } from '@angular/router';
 export class ManageUserComponent implements OnInit {
 
   public searchUserForm: FormGroup;
+  public userData: User[];
+  jsonConvert: JsonConvert = new JsonConvert();
 
   get name() {
     return this.searchUserForm.controls['name'];
@@ -19,18 +24,22 @@ export class ManageUserComponent implements OnInit {
     return this.searchUserForm.controls['mobileNumber'];
   }
 
-  constructor(private _formBuilder : FormBuilder, private _router: Router) {
+  constructor(private _formBuilder : FormBuilder, private _router: Router,
+              private _userService: UserService) {
     this.searchUserForm = _formBuilder.group({
-      'name' : ['', [Validators.required]],
-      'mobileNumber': ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]]
+      'name' : ['all', [Validators.required]],
+      'mobileNumber': ['', [Validators.minLength(10), Validators.maxLength(10)]],
+      'email' : [''],
+      'subscription' : ['']
     });
   }
 
   ngOnInit(): void {
+
   }
 
   formSubmit() {
-    
+
   }
 
   onClear() {
