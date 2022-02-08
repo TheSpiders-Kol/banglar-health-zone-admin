@@ -1,6 +1,6 @@
 import { JsonProperty, JsonObject } from 'json2typescript';
 
-@JsonObject
+@JsonObject("contactDetails")
 export class ContactDetails{
     @JsonProperty('address1', String, true)
     private address1 : string = undefined!;
@@ -23,136 +23,154 @@ export class ContactDetails{
     @JsonProperty('email', String, true)
     private email:string = undefined!;
 
-    @JsonProperty('mobile', Number, true)
-    private mobile:number = undefined!;
+    @JsonProperty('mobile', String, true)
+    private mobile:string = undefined!;
+
+    @JsonProperty('district', String, true)
+    private district:string = undefined!;
 
     /**
      * Getter $address1
-     * @return {string}
+     * @return {string }
      */
-	public get $address1(): string {
+	public get $address1(): string  {
 		return this.address1;
 	}
 
     /**
      * Getter $address2
-     * @return {string}
+     * @return {string }
      */
-	public get $address2(): string {
+	public get $address2(): string  {
 		return this.address2;
 	}
 
     /**
      * Getter $city
-     * @return {string}
+     * @return {string }
      */
-	public get $city(): string {
+	public get $city(): string  {
 		return this.city;
 	}
 
     /**
      * Getter $state
-     * @return {string}
+     * @return {string }
      */
-	public get $state(): string {
+	public get $state(): string  {
 		return this.state;
 	}
 
     /**
      * Getter $country
-     * @return {string}
+     * @return {string }
      */
-	public get $country(): string {
+	public get $country(): string  {
 		return this.country;
 	}
 
     /**
      * Getter $pin
-     * @return {number}
+     * @return {number }
      */
-	public get $pin(): number {
+	public get $pin(): number  {
 		return this.pin;
 	}
 
     /**
      * Getter $email
-     * @return {string}
+     * @return {string }
      */
-	public get $email(): string {
+	public get $email(): string  {
 		return this.email;
 	}
 
     /**
      * Getter $mobile
-     * @return {number}
+     * @return {string }
      */
-	public get $mobile(): number {
+	public get $mobile(): string  {
 		return this.mobile;
 	}
 
     /**
-     * Setter $address1
-     * @param {string} value
+     * Getter $district
+     * @return {string }
      */
-	public set $address1(value: string) {
+	public get $district(): string  {
+		return this.district;
+	}
+
+    /**
+     * Setter $address1
+     * @param {string } value
+     */
+	public set $address1(value: string ) {
 		this.address1 = value;
 	}
 
     /**
      * Setter $address2
-     * @param {string} value
+     * @param {string } value
      */
-	public set $address2(value: string) {
+	public set $address2(value: string ) {
 		this.address2 = value;
 	}
 
     /**
      * Setter $city
-     * @param {string} value
+     * @param {string } value
      */
-	public set $city(value: string) {
+	public set $city(value: string ) {
 		this.city = value;
 	}
 
     /**
      * Setter $state
-     * @param {string} value
+     * @param {string } value
      */
-	public set $state(value: string) {
+	public set $state(value: string ) {
 		this.state = value;
 	}
 
     /**
      * Setter $country
-     * @param {string} value
+     * @param {string } value
      */
-	public set $country(value: string) {
+	public set $country(value: string ) {
 		this.country = value;
 	}
 
     /**
      * Setter $pin
-     * @param {number} value
+     * @param {number } value
      */
-	public set $pin(value: number) {
+	public set $pin(value: number ) {
 		this.pin = value;
 	}
 
     /**
      * Setter $email
-     * @param {string} value
+     * @param {string } value
      */
-	public set $email(value: string) {
+	public set $email(value: string ) {
 		this.email = value;
 	}
 
     /**
      * Setter $mobile
-     * @param {number} value
+     * @param {string } value
      */
-	public set $mobile(value: number) {
+	public set $mobile(value: string ) {
 		this.mobile = value;
 	}
 
+    /**
+     * Setter $district
+     * @param {string } value
+     */
+	public set $district(value: string ) {
+		this.district = value;
+	}
 
 }

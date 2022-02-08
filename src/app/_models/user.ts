@@ -1,34 +1,28 @@
 import {JsonObject, JsonProperty} from "json2typescript";
 import { ContactDetails } from './contact-details';
 
-@JsonObject
+@JsonObject("User")
 export class User {
 
-	@JsonProperty('user-id', Number, true)
+	@JsonProperty('userId', Number, true)
 	private userId: number= undefined!;
 
-	@JsonProperty('parent-id', Number, true)
-    private parentId : number = undefined!;
-
-    @JsonProperty('type', String, true)
-    private userType : string = undefined!;
-
-	@JsonProperty('user-name', String, true)
+	@JsonProperty('userName', String, true)
 	private userName: string = undefined!;
 
-    @JsonProperty('password', String, true)
-	private password : string = undefined!;
+    @JsonProperty('subscripionExpiry', String, true)
+	private subscripionExpiry : string = undefined!;
 
-	@JsonProperty('enabled', Boolean, true)
-	private isEnabled : boolean = undefined!;
+	@JsonProperty('authority', String, true)
+	private authority : String = undefined!;
 
-	@JsonProperty('first-name', String, true)
+	@JsonProperty('firstName', String, true)
 	private firstName : string = undefined!;
 
-	@JsonProperty('last-name', String, true)
+	@JsonProperty('lastName', String, true)
 	private lastName : string = undefined!;
 
-	@JsonProperty('middle-name', String , true)
+	@JsonProperty('middleName', String , true)
 	private middleName : string = undefined!;
 
     @JsonProperty('sex', String , true)
@@ -37,9 +31,20 @@ export class User {
     @JsonProperty('dob', String , true)
 	private dob : string = undefined!;
 
-	@JsonProperty('user-contact', ContactDetails, true)
+	@JsonProperty('contactDetails', ContactDetails, true)
 	private contactDetails : ContactDetails = undefined!;
 
+  @JsonProperty('enabled', Boolean, true)
+	private enabled : Boolean = undefined!;
+
+  @JsonProperty('otp', String , true)
+	private otp : string = undefined!;
+
+  @JsonProperty('trial', Boolean, true)
+	private trial : Boolean = undefined!;
+
+  @JsonProperty('hasValidSubscription', Boolean, true)
+	private hasValidSubscription : Boolean = undefined!;
 
     /**
      * Getter $userId
@@ -47,22 +52,6 @@ export class User {
      */
 	public get $userId(): number {
 		return this.userId;
-	}
-
-    /**
-     * Getter $parentId
-     * @return {number }
-     */
-	public get $parentId(): number  {
-		return this.parentId;
-	}
-
-    /**
-     * Getter $userType
-     * @return {string }
-     */
-	public get $userType(): string  {
-		return this.userType;
 	}
 
     /**
@@ -74,19 +63,19 @@ export class User {
 	}
 
     /**
-     * Getter $password
+     * Getter $subscripionExpiry
      * @return {string }
      */
-	public get $password(): string  {
-		return this.password;
+	public get $subscripionExpiry(): string  {
+		return this.subscripionExpiry;
 	}
 
     /**
-     * Getter $isEnabled
-     * @return {boolean }
+     * Getter $authority
+     * @return {String }
      */
-	public get $isEnabled(): boolean  {
-		return this.isEnabled;
+	public get $authority(): String  {
+		return this.authority;
 	}
 
     /**
@@ -138,27 +127,43 @@ export class User {
 	}
 
     /**
+     * Getter $enabled
+     * @return {Boolean }
+     */
+	public get $enabled(): Boolean  {
+		return this.enabled;
+	}
+
+    /**
+     * Getter $otp
+     * @return {string }
+     */
+	public get $otp(): string  {
+		return this.otp;
+	}
+
+    /**
+     * Getter $trial
+     * @return {Boolean }
+     */
+	public get $trial(): Boolean  {
+		return this.trial;
+	}
+
+    /**
+     * Getter $hasValidSubscription
+     * @return {Boolean }
+     */
+	public get $hasValidSubscription(): Boolean  {
+		return this.hasValidSubscription;
+	}
+
+    /**
      * Setter $userId
      * @param {number} value
      */
 	public set $userId(value: number) {
 		this.userId = value;
-	}
-
-    /**
-     * Setter $parentId
-     * @param {number } value
-     */
-	public set $parentId(value: number ) {
-		this.parentId = value;
-	}
-
-    /**
-     * Setter $userType
-     * @param {string } value
-     */
-	public set $userType(value: string ) {
-		this.userType = value;
 	}
 
     /**
@@ -170,19 +175,19 @@ export class User {
 	}
 
     /**
-     * Setter $password
+     * Setter $subscripionExpiry
      * @param {string } value
      */
-	public set $password(value: string ) {
-		this.password = value;
+	public set $subscripionExpiry(value: string ) {
+		this.subscripionExpiry = value;
 	}
 
     /**
-     * Setter $isEnabled
-     * @param {boolean } value
+     * Setter $authority
+     * @param {String } value
      */
-	public set $isEnabled(value: boolean ) {
-		this.isEnabled = value;
+	public set $authority(value: String ) {
+		this.authority = value;
 	}
 
     /**
@@ -231,6 +236,38 @@ export class User {
      */
 	public set $contactDetails(value: ContactDetails ) {
 		this.contactDetails = value;
+	}
+
+    /**
+     * Setter $enabled
+     * @param {Boolean } value
+     */
+	public set $enabled(value: Boolean ) {
+		this.enabled = value;
+	}
+
+    /**
+     * Setter $otp
+     * @param {string } value
+     */
+	public set $otp(value: string ) {
+		this.otp = value;
+	}
+
+    /**
+     * Setter $trial
+     * @param {Boolean } value
+     */
+	public set $trial(value: Boolean ) {
+		this.trial = value;
+	}
+
+    /**
+     * Setter $hasValidSubscription
+     * @param {Boolean } value
+     */
+	public set $hasValidSubscription(value: Boolean ) {
+		this.hasValidSubscription = value;
 	}
 
 }

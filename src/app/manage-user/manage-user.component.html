@@ -9,7 +9,7 @@
             <form [formGroup]="searchUserForm" (ngSubmit)="formSubmit()">
               <div class="form-group mb-3">
                 <label for="inputName" class="form-label">User Name</label>
-                <input type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter user name">
+                <input type="text" formControlName="userName" class="form-control" id="inputName" placeholder="Enter user name">
               </div>
               <div class="form-group mb-3">
                 <label for="inputMobileNumber" class="form-label">Mobile Number</label>
@@ -60,20 +60,20 @@
                     </tr>
                 </thead>
                 <tbody class="tableBody">
-                  <tr>
-                    <td>1</td>
-                    <td>Aranya Banik</td>
-                    <td>Aranya_Banik</td>
-                    <td>9123456789</td>
-                    <td>abcd@gmail.com</td>
-                    <td>121/51</td>
-                    <td>DH Road</td>
-                    <td>Kolkata</td>
-                    <td>South 24 Parganas</td>
-                    <td>700063</td>
-                    <td>26/03/2022</td>
-                    <td>Yes</td>
-                    <td>No</td>
+                  <tr *ngFor="let user of userData; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{user.$firstName + user.$middleName + user.$lastName}}</td>
+                    <td>{{user.$userName}}</td>
+                    <td>{{user.$contactDetails.$mobile}}</td>
+                    <td>{{user.$contactDetails.$email}}</td>
+                    <td>{{user.$contactDetails.$address1}}</td>
+                    <td>{{user.$contactDetails.$address2}}</td>
+                    <td>{{user.$contactDetails.$city}}</td>
+                    <td>{{user.$contactDetails.$district}}</td>
+                    <td>{{user.$contactDetails.$pin}}</td>
+                    <td>{{user.$subscripionExpiry}}</td>
+                    <td>{{user.$enabled}}</td>
+                    <td>{{user.$trial}}</td>
                     <td class="text-center">
                       <div class="btn-group">
                         <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
@@ -94,3 +94,4 @@
     </div>
   </div>
 </div>
+<app-snackbar></app-snackbar>

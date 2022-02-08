@@ -18,37 +18,26 @@ export class UserService {
     this.jsonConvert = new JsonConvert();
   }
 
-  public listUsers(userName: string, expired :boolean, email: string, mobile: string,
-    limit: number, offset: number, wid: string) :Observable<User[]> {
-
+  public listUsers(userName: string,email: string, mobileNumber: string,
+    subscription: string) :Observable<User[]> {
     let url : string = AppConstants._listUser;
-    if (userName || expired || email || mobile || limit || offset || wid) {
+    if (userName || subscription || email || mobileNumber) {
       url = url + "?";
       if (userName) {
-        url = url + "user-name=" + userName + "&";
+        url = url + "username=" + userName + "&";
       }
-      if (expired) {
-        url = url + "expired=" + expired + "&";
+      if (subscription) {
+        url = url + "expired=" + subscription + "&";
       }
       if (email) {
         url = url + "email=" + email + "&";
       }
-      if (mobile) {
-        url = url + "mobile=" + mobile + "&";
-      }
-      if (limit) {
-        url = url + "limit=" + limit + "&";
-      }
-      if (offset) {
-        url = url + "offset=" + offset + "&";
-      }
-      if (wid) {
-        url = url + "wid=" + wid + "&";
+      if (mobileNumber) {
+        url = url + "mobile=" + mobileNumber + "&";
       }
       url = url.substr(0, url.length - 1)
     }
     return this._http.get<any>(url,
       { headers: FlyerUtils.getHeaders(AppConstants._accessTokenType) });
-
   }
 }
