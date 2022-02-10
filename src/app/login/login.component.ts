@@ -4,6 +4,7 @@ import { Any } from 'json2typescript';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { Snackbar } from '../snackbar/snackbar.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
   constructor(private _formBuilder : FormBuilder,
     private _authservice: AuthService,
     private _userService : UserService,
-    private _snackbar : Snackbar,) {
+    private _snackbar : Snackbar, private _router: Router) {
     this.signInForm = _formBuilder.group({
       'userName' : ['', [Validators.required]],
       'password': ['', [Validators.required]]
@@ -52,6 +53,8 @@ export class LoginComponent implements OnInit {
 					localStorage.setItem('access_token', data.access_token);
 					localStorage.setItem('refresh_token', data.refresh_token);
 					this._snackbar.alert("Login Successful");
+					this.sendLoggedInfo(this.isLoggedIn);
+					this._router.navigateByUrl('/home');
 				},
 				error => {
 					this.loader=false;
@@ -65,5 +68,9 @@ export class LoginComponent implements OnInit {
 					}
 				}
 			)
+	}
+
+	sendLoggedInfo(info: boolean) {
+		this._authservice.sendLoggedInInfo(info);
 	}
 }

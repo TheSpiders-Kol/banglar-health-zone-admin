@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
-import { Auth } from '../_models/auth'
+import { Auth } from '../_models/auth';
 import { AppConstants } from '../_constants/app.constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  private _isLoggedInSource = new Subject<boolean>();
+  isLoggedIn$ = this._isLoggedInSource.asObservable();
 
   constructor(private _http: HttpClient) { }
 
@@ -56,5 +60,9 @@ export class AuthService {
 
   public logout() : void{
 	localStorage.clear();
+  }
+
+  sendLoggedInInfo(logInfo: boolean) {
+    this._isLoggedInSource.next(logInfo);
   }
 }
