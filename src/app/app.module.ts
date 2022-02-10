@@ -19,6 +19,7 @@ import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-ins
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { Snackbar } from './snackbar/snackbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { Snackbar } from './snackbar/snackbar.component';
     EditInsuranceCompanyComponent,
     AddUserComponent,
     EditUserComponent,
-    Snackbar
+    Snackbar,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

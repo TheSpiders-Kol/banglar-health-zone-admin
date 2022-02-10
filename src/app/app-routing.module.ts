@@ -12,9 +12,11 @@ import { EditHealthServiceComponent } from './edit-health-service/edit-health-se
 import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
+  { path: 'home', component: HomeComponent},
   { path: 'manageUser', component: ManageUserComponent},
   { path: 'manageHospital', component: ManageHospitalComponent},
   { path: 'addHospital', component: AddHospitalComponent},
