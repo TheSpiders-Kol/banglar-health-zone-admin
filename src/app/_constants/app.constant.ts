@@ -10,4 +10,6 @@ export class AppConstants {
   public static secret: string = environment.apiSecret;
   public static _getUserUrl = AppConstants._base_url + '/api/user/get';
   public static _webTokenType: string = 'webtoken';
+
+  public static _addUserUrl :string = AppConstants._base_url + '/api/user/register';
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JsonConvert } from 'json2typescript';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { User } from '../_models/user';
 import { Snackbar } from '../snackbar/snackbar.component';
 
@@ -60,11 +60,10 @@ export class ManageUserComponent implements OnInit {
   }
 
   onClear() {
-
   }
 
-  editUser(){
-    this._router.navigate(['editUser'])
+  goToEditUser(uName: string){
+    this._router.navigate(['editUser'],{queryParams: {uName: uName}})
   }
 
 }

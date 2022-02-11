@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { JsonConvert } from 'json2typescript';
+import { UserService } from '../services/user.service';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-edit-user',
@@ -10,6 +14,7 @@ export class EditUserComponent implements OnInit {
 
   public editUserForm: FormGroup;
   public formSubmitted: boolean = false;
+  public userDetails: User = new User();
 
   get firstName() {
     return this.editUserForm.controls['firstName'];
@@ -59,7 +64,9 @@ export class EditUserComponent implements OnInit {
     return this.editUserForm.get('contactDetails.mobile');
   }
 
-  constructor(private _formBuilder : FormBuilder) {
+  constructor(private _formBuilder : FormBuilder,
+    private _route: ActivatedRoute,
+    private _userService: UserService) {
     this.editUserForm = _formBuilder.group({
       'firstName' : ['', [Validators.required]],
       'middleName' : [''],
@@ -77,16 +84,30 @@ export class EditUserComponent implements OnInit {
         'mobile' : ['', [Validators.required]],
       }),
       'subscripionExpiry': [''],
-      'enabled': [false],      
+      'enabled': [false],
       'trial': [false]
     });
   }
 
   ngOnInit(): void {
+    let usrNm :string = this._route.snapshot.queryParamMap.get('uName') || '';
+    this._userService.getUser(usrNm).
+      subscribe(
+        data => {
+          let jsonConvert: JsonConvert = new JsonConvert();
+          this.userDetails = jsonConvert.deserializeObject<User>(data['user'], User);
+          this.loadUserDetails(this.userDetails);
+        }
+      )
   }
 
   formSubmit() {
     this.formSubmitted = true;
+  }
+
+  loadUserDetails(usr : User){
+    this.editUserForm.controls['firstName'].setValue(usr.$firstName);
+
   }
 
 }

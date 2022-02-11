@@ -62,7 +62,7 @@
                 <tbody class="tableBody">
                   <tr *ngFor="let user of userData; let i=index">
                     <td>{{i+1}}</td>
-                    <td>{{user.$firstName + user.$middleName + user.$lastName}}</td>
+                    <td>{{user.$firstName + " " + user.$lastName}}</td>
                     <td>{{user.$userName}}</td>
                     <td>{{user.$contactDetails.$mobile}}</td>
                     <td>{{user.$contactDetails.$email}}</td>
@@ -80,7 +80,7 @@
                           <i class="fa fa-bars"></i>
                         </button>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item anchorTagPadding" (click)="editUser()"><h6 class="small">Edit User</h6></a></li>
+                        <li><a class="dropdown-item anchorTagPadding" (click)="goToEditUser(user.$userName)"><h6 class="small">Edit User</h6></a></li>
                         </ul>
                       </div>
                     </td>

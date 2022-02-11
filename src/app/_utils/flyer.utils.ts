@@ -7,9 +7,16 @@ export class FlyerUtils {
 
   }
   public static getHeaders(type: string) : HttpHeaders {
+    if(type === AppConstants._accessTokenType) {
       return new HttpHeaders({
         'Authorization': 'Bearer'+ localStorage.getItem('access_token'),
         'Content-Type' : 'application/json'
       });
+    }
+    else {
+      return new HttpHeaders({
+        'Content-Type' : 'application/json'
+      });
+    }
   }
 }
