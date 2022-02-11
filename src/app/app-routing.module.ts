@@ -10,7 +10,6 @@ import { HealthServicesComponent } from './health-services/health-services.compo
 import { InsuranceCompaniesComponent } from './insurance-companies/insurance-companies.component';
 import { EditHealthServiceComponent } from './edit-health-service/edit-health-service.component';
 import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
-import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { HomeComponent } from './home/home.component';
 
@@ -25,7 +24,6 @@ const routes: Routes = [
   { path: 'insuranceCompanies', component: InsuranceCompaniesComponent},
   { path: 'editHealthService', component: EditHealthServiceComponent},
   { path: 'editInsuranceCompany', component: EditInsuranceCompanyComponent},
-  { path: 'addUser', component: AddUserComponent},
   { path: 'editUser', component: EditUserComponent}
 ];
 

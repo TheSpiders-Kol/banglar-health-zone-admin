@@ -3,6 +3,12 @@
         <div class="col-12 m-0 p-0">
             <div class="container">
                 <div class="row my-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a routerLink="/home" class="breadcrumbStyle"><b>Home</b></a></li>
+                          <li class="breadcrumb-item active" aria-current="page"><b>Manage Hospital</b></li>
+                        </ol>
+                    </nav>
                     <div class="col-12 secondaryContainerBackground p-4">
                         <h1 class="h3 mb-4 mainHeader"><i class="fas fa-search"></i> Search Hospitals</h1>
                         <form [formGroup]="searchHospitalForm" (ngSubmit)="formSubmit()">

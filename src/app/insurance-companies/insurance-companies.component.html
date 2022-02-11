@@ -3,6 +3,12 @@
         <div class="col-12 m-0 p-0">
             <div class="container">
                 <div class="row my-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a routerLink="/home" class="breadcrumbStyle"><b>Home</b></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><b>Insurance Companies</b></li>
+                        </ol>
+                    </nav>
                     <div class="col-12 secondaryContainerBackground p-4">
                         <h1 class="h3 mb-4 mainHeader"><i class="fas fa-plus"></i> Add Insurance Company</h1>
                         <form [formGroup]="addInsuranceCompanyForm" (ngSubmit)="formSubmit()">
@@ -35,16 +41,7 @@
                                     <tr>
                                         <td>1</td>
                                         <td>Star Health</td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown">
-                                                    <i class="fa fa-bars"></i>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item anchorTagPadding" (click)="addInsuranceCompany()"><h6 class="small">Edit Company</h6></a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
+                                        <td class="text-center"><button type="button" class="btn btn-primary btn-sm" (click)="addInsuranceCompany()">Edit Company</button></td>
                                     </tr>
                                 </tbody>
                             </table>

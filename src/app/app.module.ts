@@ -16,7 +16,6 @@ import { HealthServicesComponent } from './health-services/health-services.compo
 import { InsuranceCompaniesComponent } from './insurance-companies/insurance-companies.component';
 import { EditHealthServiceComponent } from './edit-health-service/edit-health-service.component';
 import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
-import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { Snackbar } from './snackbar/snackbar.component';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +34,6 @@ import { HomeComponent } from './home/home.component';
     InsuranceCompaniesComponent,
     EditHealthServiceComponent,
     EditInsuranceCompanyComponent,
-    AddUserComponent,
     EditUserComponent,
     Snackbar,
     HomeComponent
