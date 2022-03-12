@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { DataService } from '../services/data.service';
+import { Snackbar } from '../snackbar/snackbar.component';
+import { AppConstants } from '../_constants/app.constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +12,28 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public loggedInInfo: boolean = false;
+  public isLoggedIn: boolean = false;
 
-  constructor(private _authService: AuthService) { }
+  constructor(private _dataService: DataService,
+    private _authservice: AuthService,
+    private _snackbar : Snackbar,
+    private _router : Router) { }
 
   ngOnInit(): void {
-    this._authService.isLoggedIn$
+
+
+    this._dataService.isLoggedIn$
       .subscribe(
         data => {
-          this.loggedInInfo = data;
+          this.isLoggedIn = data;
         }
       );
   }
+
+  logout() {
+		this.isLoggedIn=false;
+		this._authservice.logout();
+		this._router.navigate(['']);
+	}
 
 }

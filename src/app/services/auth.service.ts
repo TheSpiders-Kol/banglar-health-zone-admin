@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
-
 import { Auth } from '../_models/auth';
 import { AppConstants } from '../_constants/app.constant';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private _isLoggedInSource = new Subject<boolean>();
-  isLoggedIn$ = this._isLoggedInSource.asObservable();
 
   constructor(private _http: HttpClient) { }
 
@@ -44,9 +40,7 @@ export class AuthService {
 
   public isValidLogin() : boolean {
 		if (localStorage.getItem('access_token') &&
-				localStorage.getItem('userName') &&
-				localStorage.getItem('userId') &&
-        localStorage.getItem('userName')) {
+				localStorage.getItem('refresh_token')) {
 			 return true;
 		} else {
 			this.logout();
@@ -54,15 +48,10 @@ export class AuthService {
 		}
   }
 
-  public getCurrentUserRole() {
-    return localStorage.getItem('role');
-  }
-
   public logout() : void{
 	localStorage.clear();
   }
 
-  sendLoggedInInfo(logInfo: boolean) {
-    this._isLoggedInSource.next(logInfo);
-  }
+
+
 }

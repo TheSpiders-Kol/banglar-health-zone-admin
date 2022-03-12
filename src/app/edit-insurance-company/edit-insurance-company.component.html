@@ -15,10 +15,7 @@
                         <form [formGroup]="editInsuranceCompanyForm" (ngSubmit)="formSubmit()">
                             <div class="form-group mb-3">
                               <label for="inputName" class="form-label">Insurance Company</label>
-                              <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter insurance company">
-                              <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.['required']" class="text-danger">Insurance company name is required</small>
-                              </div>
+                              <input type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter insurance company">
                             </div>
                             <button [disabled]="!editInsuranceCompanyForm.valid" type="submit" class="btn btn-primary text-uppercase">Update Insurance Company</button>
                           </form>
@@ -28,3 +25,4 @@
         </div>
     </div>
 </div>
+<app-snackbar></app-snackbar>

@@ -19,6 +19,9 @@ import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-ins
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { Snackbar } from './snackbar/snackbar.component';
 import { HomeComponent } from './home/home.component';
+import { TokenRefreshService } from './services/token-refresh.service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,16 +39,18 @@ import { HomeComponent } from './home/home.component';
     EditInsuranceCompanyComponent,
     EditUserComponent,
     Snackbar,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     NgSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    FormsModule
   ],
-  providers: [],
+  providers: [TokenRefreshService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

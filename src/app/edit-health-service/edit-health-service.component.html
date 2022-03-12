@@ -15,9 +15,9 @@
                         <form [formGroup]="editHealthServiceForm" (ngSubmit)="formSubmit()">
                             <div class="form-group mb-3">
                               <label for="inputName" class="form-label">Health Service</label>
-                              <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter health service">
-                              <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.['required']" class="text-danger">Health service name is required</small>
+                              <input type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter health service">
+                              <div >
+                                <small class="text-danger">Health service name is required</small>
                               </div>
                             </div>
                             <button [disabled]="!editHealthServiceForm.valid" type="submit" class="btn btn-primary text-uppercase">Update Health Service</button>
@@ -28,3 +28,4 @@
         </div>
     </div>
 </div>
+<app-snackbar></app-snackbar>

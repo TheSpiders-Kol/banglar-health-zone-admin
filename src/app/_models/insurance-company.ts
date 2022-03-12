@@ -1,13 +1,12 @@
 import { JsonProperty, JsonObject } from 'json2typescript';
 
 @JsonObject("")
-export class HealthServices{
+export class InsuranceCompany{
   @JsonProperty('id', Number, true)
 	private id: number= undefined!;
 
-	@JsonProperty('name', String, true)
-	private name: string = undefined!;
-
+	@JsonProperty('company', String, true)
+	private company: string = undefined!;
 
     /**
      * Getter $id
@@ -18,11 +17,11 @@ export class HealthServices{
 	}
 
     /**
-     * Getter $name
+     * Getter $company
      * @return {string }
      */
-	public get $name(): string  {
-		return this.name;
+	public get $company(): string  {
+		return this.company;
 	}
 
     /**
@@ -34,11 +33,11 @@ export class HealthServices{
 	}
 
     /**
-     * Setter $name
+     * Setter $company
      * @param {string } value
      */
-	public set $name(value: string ) {
-		this.name = value;
+	public set $company(value: string ) {
+		this.company = value;
 	}
 
 }

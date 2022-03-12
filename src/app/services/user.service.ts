@@ -57,4 +57,21 @@ export class UserService {
       { headers: FlyerUtils.getHeaders(AppConstants._accessTokenType) });
   }
 
+  public extendSubscription(usrName : string){
+    this.jsonConvert.valueCheckingMode = ValueCheckingMode.DISALLOW_NULL;
+    return this._http.post<any>(AppConstants._extendSubscription + '?user=' + usrName,
+      {},
+      { headers: FlyerUtils.getHeaders(AppConstants._accessTokenType) });
+  }
+
+  public updateUser(usrDetails : User){
+    this.jsonConvert.valueCheckingMode = ValueCheckingMode.DISALLOW_NULL;
+    return this._http.post<any>(AppConstants._updateUser,
+      JSON.stringify(this.jsonConvert.serializeObject(usrDetails)),
+      { headers: FlyerUtils.getHeaders(AppConstants._accessTokenType) });
+  }
+
+
+
+
 }

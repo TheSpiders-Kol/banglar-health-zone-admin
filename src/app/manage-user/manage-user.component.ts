@@ -5,6 +5,7 @@ import { JsonConvert } from 'json2typescript';
 import { UserService } from '../services/user.service';
 import { User } from '../_models/user';
 import { Snackbar } from '../snackbar/snackbar.component';
+import { ContactDetails } from '../_models/contact-details';
 
 @Component({
   selector: 'app-manage-user',
@@ -15,6 +16,7 @@ export class ManageUserComponent implements OnInit {
 
   public searchUserForm: FormGroup;
   public userData: User[];
+  public userDetails: User;
   jsonConvert: JsonConvert = new JsonConvert();
 
   get userName() {
@@ -36,14 +38,14 @@ export class ManageUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getSearchList();
   }
 
   formSubmit() {
-    this.fetchSearchData();
+    this.getSearchList();
   }
 
-  public fetchSearchData(){
+  public getSearchList(){
     const userName = this.searchUserForm.controls['userName'].value;
     const mobileNumber = this.searchUserForm.controls['mobileNumber'].value;
     const subscription = this.searchUserForm.controls['subscription'].value;
@@ -54,9 +56,13 @@ export class ManageUserComponent implements OnInit {
           let jsonConvert: JsonConvert = new JsonConvert();
           this._snackbar.alert("Successful!!");
           this.userData = jsonConvert.deserializeArray<User>(data['users'], User);
-          console.log(this.userData[0].$userName)
         }
       )
+  }
+
+  getUserDetails(usrNm : string){
+    this.userDetails = new User();
+
   }
 
   onClear() {
@@ -64,6 +70,15 @@ export class ManageUserComponent implements OnInit {
 
   goToEditUser(uName: string){
     this._router.navigate(['editUser'],{queryParams: {uName: uName}})
+  }
+
+  public extendSubscription(usrNm : string){
+    this._userService.extendSubscription(usrNm)
+      .subscribe(
+        data =>{
+
+        }
+      )
   }
 
 }

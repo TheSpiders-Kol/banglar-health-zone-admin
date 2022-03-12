@@ -1,5 +1,8 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+
+
 h1 { font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 900; }
 h2 { font-family: 'Montserrat', sans-serif; font-size: 30px; font-weight: 800; }
 h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; }
@@ -84,4 +87,8 @@ a.anchorStyle {
 
 a.breadcrumbStyle {
   text-decoration: none;
+}
+
+a:hover {
+  color: #0d6efd;
 }

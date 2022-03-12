@@ -5,6 +5,9 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { Snackbar } from '../snackbar/snackbar.component';
 import {Router} from '@angular/router';
+import { DataService } from '../services/data.service';
+import { Subject } from 'rxjs';
+import { TokenRefreshService } from '../services/token-refresh.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +25,9 @@ export class LoginComponent implements OnInit {
   uName: any;
   pwd: any;
 
+  private _isLoggedInSource = new Subject<boolean>();
+  isLoggedIn$ = this._isLoggedInSource.asObservable();
+
   get userName() {
     return this.signInForm.controls['userName'];
   }
@@ -32,8 +38,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private _formBuilder : FormBuilder,
     private _authservice: AuthService,
-    private _userService : UserService,
-    private _snackbar : Snackbar, private _router: Router) {
+    private _dataservice : DataService,
+    private _snackbar : Snackbar,
+    private _router: Router,
+    private _tokenRefreshService : TokenRefreshService) {
     this.signInForm = _formBuilder.group({
       'userName' : ['', [Validators.required]],
       'password': ['', [Validators.required]]
@@ -53,7 +61,8 @@ export class LoginComponent implements OnInit {
 					localStorage.setItem('access_token', data.access_token);
 					localStorage.setItem('refresh_token', data.refresh_token);
 					this._snackbar.alert("Login Successful");
-					this.sendLoggedInfo(this.isLoggedIn);
+					this._dataservice.sendLoggedInInfo(this.isLoggedIn);
+          this._tokenRefreshService.setTimer();
 					this._router.navigateByUrl('/home');
 				},
 				error => {
@@ -70,7 +79,5 @@ export class LoginComponent implements OnInit {
 			)
 	}
 
-	sendLoggedInfo(info: boolean) {
-		this._authservice.sendLoggedInInfo(info);
-	}
+
 }

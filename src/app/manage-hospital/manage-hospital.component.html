@@ -11,92 +11,74 @@
                     </nav>
                     <div class="col-12 secondaryContainerBackground p-4">
                         <h1 class="h3 mb-4 mainHeader"><i class="fas fa-search"></i> Search Hospitals</h1>
-                        <form [formGroup]="searchHospitalForm" (ngSubmit)="formSubmit()">
-                            <div class="form-group mb-3">
-                              <label for="inputName" class="form-label">Hospital Name</label>
-                              <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputName" placeholder="Enter hospital name">
-                              <div *ngIf="name.invalid && name.touched">
-                                <small *ngIf="name.errors?.['required']" class="text-danger">Hospital name is required</small>
-                              </div>
-                            </div>
+                        <form [formGroup]="searchHospitalForm" (ngSubmit)="getHospitalList()">
                             <div class="form-group mb-3">
                               <label for="inputDistrict" class="form-label">Select District</label>
                               <select [class.is-invalid]="district.invalid && district.touched" id="inputDistrict" class="form-select" formControlName="district">
-                                <option>Alipurduar</option>
-                                <option>Bankura</option>
-                                <option>Birbhum</option>
-                                <option>Cooch Behar</option>
-                                <option>Dakshin Dinajpur</option>
-                                <option>Darjeeling</option>
-                                <option>Hooghly</option>
-                                <option>Howrah</option>
-                                <option>Jalpaiguri</option>
-                                <option>Jhargram</option>
-                                <option>Kalimpong</option>
-                                <option>Kolkata</option>
-                                <option>Malda</option>
-                                <option>Murshidabad</option>
-                                <option>Nadia</option>
-                                <option>North 24 Parganas</option>
-                                <option>Paschim Medinipur</option>
-                                <option>Paschim Burdwan</option>
-                                <option>Purba Burdwan</option>
-                                <option>Purba Medinipur</option>
-                                <option>Purulia</option>
-                                <option>South 24 Parganas</option>
-                                <option>Uttar Dinajpur</option>
+                                <option value="AD">Alipurduar</option>
+                                <option value="BN">Bankura</option>
+                                <option value="BI">Birbhum</option>
+                                <option value="KB">Cooch Behar</option>
+                                <option value="DD">Dakshin Dinajpur</option>
+                                <option value="DA">Darjeeling</option>
+                                <option value="HG">Hooghly</option>
+                                <option value="HR">Howrah</option>
+                                <option value="JP">Jalpaiguri</option>
+                                <option value="JH">Jhargram</option>
+                                <option value="KA">Kalimpong</option>
+                                <option value="KO">Kolkata</option>
+                                <option value="MA">Malda</option>
+                                <option value="MU">Murshidabad</option>
+                                <option value="NA">Nadia</option>
+                                <option value="PN">North 24 Parganas</option>
+                                <option value="ME">Paschim Medinipur</option>
+                                <option value="BR">Paschim Burdwan</option>
+                                <option value="BRE">Purba Burdwan</option>
+                                <option value="MEE">Purba Medinipur</option>
+                                <option value="PU">Purulia</option>
+                                <option value="PS">South 24 Parganas</option>
+                                <option value="UD">Uttar Dinajpur</option>
                               </select>
                               <div *ngIf="district.invalid && district.touched">
                                 <small *ngIf="district.errors?.['required']" class="text-danger">You must select district</small>
                               </div>
                             </div>
+                            <div class="form-group mb-3">
+                              <label for="inputName" class="form-label">Corona Hospital</label>
+                              <input type="checkbox" formControlName="corona" >
+                            </div>
                             <button [disabled]="!searchHospitalForm.valid" type="submit" class="btn btn-primary text-uppercase">Search</button>
                             <button type="reset" class="btn btn-secondary ms-2" (click)="onClear()">CLEAR</button>
+                            <button class="btn btn-secondary ms-2 float-right" routerLink="/addHospital">ADD HOSPITAL</button>
                           </form>
                     </div>
                 </div>
                 <div class="row mb-5">
                     <div class="col-12 secondaryContainerBackground p-4">
                         <h1 class="h3 mb-4 mainHeader"><i class="fas fa-hospital"></i> Hospital List</h1>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered">
+                        <div class="table-responsive text-center">
+                            <table *ngIf="listGenerated" class="table table-striped table-bordered">
                                 <thead class="tableHead">
                                     <tr>
                                         <th>Sl</th>
                                         <th>Name</th>
-                                        <th>Contact</th>
-                                        <th>Email</th>
                                         <th>Address</th>
                                         <th>District</th>
-                                        <th>Pin Code</th>
-                                        <th>House Doctors</th>
-                                        <th>Visiting Consulatnt</th>
-                                        <th>Bed Strength</th>
-                                        <th>Services</th>
-                                        <th>Insurance</th>
                                         <th>Active</th>
                                         <th>Corona Treatment</th>
                                         <th>Edit Hospital</th>
-        
+
                                     </tr>
                                 </thead>
-        
+
                                 <tbody class="tableBody">
-                                    <tr>
-                                        <td>1</td>
-                                        <td>AMRI</td>
-                                        <td>03324673212</td>
-                                        <td>abcd@gmail.com</td>
-                                        <td>A 4/9, Diamond Park, Kolkata 700104.</td>     
-                                        <td>Kolkata</td>
-                                        <td>700104</td>
-                                        <td>10</td>
-                                        <td>25</td>
-                                        <td>100</td>
-                                        <td>ECG, CT, X-Ray</td>
-                                        <td>Star Health, LIC</td>
-                                        <td>Yes</td>
-                                        <td>Yes</td>
+                                    <tr *ngFor="let list of hospitalList; let i=index">
+                                        <td>{{i+1}}</td>
+                                        <td>{{list.$name}}</td>
+                                        <td>{{list.$address}}</td>
+                                        <td>{{list.$district}}</td>
+                                        <td>{{list.$active}}</td>
+                                        <td>{{list.$coronaHospital}}</td>
                                         <td class="text-center"><button type="button" class="btn btn-primary btn-sm" (click)="editHospital()">Edit</button></td>
                                     </tr>
                                 </tbody>
@@ -108,3 +90,4 @@
         </div>
     </div>
 </div>
+<app-snackbar></app-snackbar>

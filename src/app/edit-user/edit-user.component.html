@@ -48,116 +48,95 @@
                             <div class="col-md-4">
                                 <label for="inputGender" class="form-label">Gender</label>
                                 <select [class.is-invalid]="sex.invalid && sex.touched" id="inputGender" class="form-select" formControlName="sex">
-                                  <option>Male</option>
-                                  <option>Female</option>
-                                  <option>Rather not say</option>
+                                  <option value="M">Male</option>
+                                  <option value="F">Female</option>
                                 </select>
                                 <div *ngIf="sex.invalid && sex.touched">
                                   <small *ngIf="sex.errors?.['required']" class="text-danger">Select your gender</small>
                                 </div>
                             </div>
-
-                            <div class="row m-0 p-0" formGroupName="contactDetails">
-                                <div class="col-12 mt-4">
-                                    <label for="inputAddress1" class="form-label">Address 1</label>
-                                    <input [class.is-invalid]="address1?.invalid && address1?.touched" type="text" formControlName="address1" class="form-control" id="inputAddress1" placeholder="House no, building name">
-                                    <div *ngIf="address1?.invalid && address1?.touched">
-                                        <small *ngIf="address1?.errors?.['required']" class="text-danger">Address 1 is required</small>
-                                    </div>
-                                </div>
-                                <div class="col-12 mt-4">
-                                    <label for="inputAddress2" class="form-label">Address 2</label>
-                                    <input [class.is-invalid]="address2?.invalid && address2?.touched" type="text" formControlName="address2" class="form-control" id="inputAddress2" placeholder="Road name, area, colony">
-                                    <div *ngIf="address2?.invalid && address2?.touched">
-                                        <small *ngIf="address2?.errors?.['required']" class="text-danger">Address 2 is required</small>
-                                    </div>
-                                </div>
-                                <div class="col-4 mt-4">
-                                    <label for="inputCity" class="form-label">City / Town</label>
-                                    <input [class.is-invalid]="city?.invalid && city?.touched" type="text" formControlName="city" class="form-control" id="inputCity" placeholder="Enter city name">
-                                    <div *ngIf="city?.invalid && city?.touched">
-                                        <small *ngIf="city?.errors?.['required']" class="text-danger">City is required</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mt-4">
-                                    <label for="inputDistrict" class="form-label">Select District</label>
-                                    <select [class.is-invalid]="district?.invalid && district?.touched" id="inputDistrict" class="form-select" formControlName="district">
-                                      <option>Alipurduar</option>
-                                      <option>Bankura</option>
-                                      <option>Birbhum</option>
-                                      <option>Cooch Behar</option>
-                                      <option>Dakshin Dinajpur</option>
-                                      <option>Darjeeling</option>
-                                      <option>Hooghly</option>
-                                      <option>Howrah</option>
-                                      <option>Jalpaiguri</option>
-                                      <option>Jhargram</option>
-                                      <option>Kalimpong</option>
-                                      <option>Kolkata</option>
-                                      <option>Malda</option>
-                                      <option>Murshidabad</option>
-                                      <option>Nadia</option>
-                                      <option>North 24 Parganas</option>
-                                      <option>Paschim Medinipur</option>
-                                      <option>Paschim Burdwan</option>
-                                      <option>Purba Burdwan</option>
-                                      <option>Purba Medinipur</option>
-                                      <option>Purulia</option>
-                                      <option>South 24 Parganas</option>
-                                      <option>Uttar Dinajpur</option>
-                                    </select>
-                                    <div *ngIf="district?.invalid && district?.touched">
-                                        <small *ngIf="district?.errors?.['required']" class="text-danger">You must select district</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mt-4">
-                                    <label for="inputPinCode" class="form-label">Pin Code</label>
-                                    <input [class.is-invalid]="pin?.invalid && pin?.touched" type="number" formControlName="pin" class="form-control" id="inputPinCode" placeholder="Enter pin code">
-                                    <div *ngIf="pin?.invalid && pin?.touched">
-                                        <small *ngIf="pin?.errors?.['required']" class="text-danger">Pincode is required</small>
-                                        <small *ngIf="pin?.errors?.['minlength']" class="text-danger">Pincode must be of 6 digits</small>
-                                        <small *ngIf="pin?.errors?.['maxlength']" class="text-danger">Pincode must be of 6 digits</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-4">
-                                    <label for="inputEmail" class="form-label">Email</label>
-                                    <input [class.is-invalid]="email?.invalid && email?.touched" type="email" formControlName="email" class="form-control" id="inputEmail" placeholder="Enter registered email id">
-                                    <div *ngIf="email?.invalid && email?.touched">
-                                        <small *ngIf="email?.errors?.['required']" class="text-danger">Email id is required</small>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-4">
-                                    <label for="inputContactNumber" class="form-label">Mobile Number</label>
-                                    <input [class.is-invalid]="mobile?.invalid && mobile?.touched" type="tel" formControlName="mobile" class="form-control" id="inputContactNumber" placeholder="Enter mobile number">
-                                    <div *ngIf="mobile?.invalid && mobile?.touched">
-                                        <small *ngIf="mobile?.errors?.['required']" class="text-danger">Mobile number is required</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 mt-4">
-                                <label for="inputSubscriptionExpiry" class="form-label">Subscription Expiry</label>
-                                <input type="date" formControlName="subscripionExpiry" class="form-control" id="inputSubscriptionExpiry">
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-check">
-                                <input formControlName="enabled" class="form-check-input" type="checkbox" id="enabledCheck">
-                                <label class="form-check-label" for="enabledCheck">
-                                  Enabled
-                                </label>
-                              </div>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="form-check">
-                                  <input formControlName="trial" class="form-check-input" type="checkbox" id="trialCheck">
-                                  <label class="form-check-label" for="trialCheck">
-                                    Trial
-                                  </label>
-                                </div>
-                            </div>
                             <div class="col-12 mt-4">
-                              <button [disabled]="!editUserForm.valid" type="submit" class="btn btn-primary text-uppercase">Submit</button>
-                            </div>
+                              <label for="inputAddress1" class="form-label">Address 1</label>
+                              <input [class.is-invalid]="address1?.invalid && address1?.touched" type="text" formControlName="address1" class="form-control" id="inputAddress1" placeholder="House no, building name">
+                              <div *ngIf="address1?.invalid && address1?.touched">
+                                  <small *ngIf="address1?.errors?.['required']" class="text-danger">Address 1 is required</small>
+                              </div>
+                          </div>
+                          <div class="col-12 mt-4">
+                              <label for="inputAddress2" class="form-label">Address 2</label>
+                              <input [class.is-invalid]="address2?.invalid && address2?.touched" type="text" formControlName="address2" class="form-control" id="inputAddress2" placeholder="Road name, area, colony">
+                              <div *ngIf="address2?.invalid && address2?.touched">
+                                  <small *ngIf="address2?.errors?.['required']" class="text-danger">Address 2 is required</small>
+                              </div>
+                          </div>
+                          <div class="col-4 mt-4">
+                              <label for="inputCity" class="form-label">City / Town</label>
+                              <input [class.is-invalid]="city?.invalid && city?.touched" type="text" formControlName="city" class="form-control" id="inputCity" placeholder="Enter city name">
+                              <div *ngIf="city?.invalid && city?.touched">
+                                  <small *ngIf="city?.errors?.['required']" class="text-danger">City is required</small>
+                              </div>
+                          </div>
+                          <div class="col-md-4 mt-4">
+                              <label for="inputDistrict" class="form-label">Select District</label>
+                              <select [class.is-invalid]="district?.invalid && district?.touched" id="inputDistrict" class="form-select" formControlName="district">
+                                <option value="AD">Alipurduar</option>
+                                <option value="BN">Bankura</option>
+                                <option value="BI">Birbhum</option>
+                                <option value="KB">Cooch Behar</option>
+                                <option value="DD">Dakshin Dinajpur</option>
+                                <option value="DA">Darjeeling</option>
+                                <option value="HG">Hooghly</option>
+                                <option value="HR">Howrah</option>
+                                <option value="JP">Jalpaiguri</option>
+                                <option value="JH">Jhargram</option>
+                                <option value="KA">Kalimpong</option>
+                                <option value="KO">Kolkata</option>
+                                <option value="MA">Malda</option>
+                                <option value="MU">Murshidabad</option>
+                                <option value="NA">Nadia</option>
+                                <option value="PN">North 24 Parganas</option>
+                                <option value="ME">Paschim Medinipur</option>
+                                <option value="BR">Paschim Burdwan</option>
+                                <option value="BRE">Purba Burdwan</option>
+                                <option value="MEE">Purba Medinipur</option>
+                                <option value="PU">Purulia</option>
+                                <option value="PS">South 24 Parganas</option>
+                                <option value="UD">Uttar Dinajpur</option>
+                              </select>
+                              <div *ngIf="district?.invalid && district?.touched">
+                                  <small *ngIf="district?.errors?.['required']" class="text-danger">You must select district</small>
+                              </div>
+                          </div>
+                          <div class="col-md-4 mt-4">
+                              <label for="inputPinCode" class="form-label">Pin Code</label>
+                              <input [class.is-invalid]="pin?.invalid && pin?.touched" type="number" formControlName="pin" class="form-control" id="inputPinCode" placeholder="Enter pin code">
+                              <div *ngIf="pin?.invalid && pin?.touched">
+                                  <small *ngIf="pin?.errors?.['required']" class="text-danger">Pincode is required</small>
+                                  <small *ngIf="pin?.errors?.['minlength']" class="text-danger">Pincode must be of 6 digits</small>
+                                  <small *ngIf="pin?.errors?.['maxlength']" class="text-danger">Pincode must be of 6 digits</small>
+                              </div>
+                          </div>
+                          <div class="col-md-6 mt-4">
+                              <label for="inputEmail" class="form-label">Email</label>
+                              <input [class.is-invalid]="email?.invalid && email?.touched" type="email" formControlName="email" class="form-control" id="inputEmail" placeholder="Enter registered email id">
+                              <div *ngIf="email?.invalid && email?.touched">
+                                  <small *ngIf="email?.errors?.['required']" class="text-danger">Email id is required</small>
+                              </div>
+                          </div>
+                          <div class="col-md-6 mt-4">
+                              <label for="inputContactNumber" class="form-label">Mobile Number</label>
+                              <input [class.is-invalid]="mobile?.invalid && mobile?.touched" type="tel" formControlName="mobile" class="form-control" id="inputContactNumber" placeholder="Enter mobile number">
+                              <div *ngIf="mobile?.invalid && mobile?.touched">
+                                  <small *ngIf="mobile?.errors?.['required']" class="text-danger">Mobile number is required</small>
+                              </div>
+                          </div>
+                          <div class="col-md-12 mt-4">
+                              <label for="inputSubscriptionExpiry" class="form-label" disabled>Subscription Expiry</label>
+                              <input type="text" formControlName="subscripionExpiry" class="form-control" id="inputSubscriptionExpiry">
+                          </div>
+                          <div class="col-12 mt-4">
+                            <button [disabled]="!editUserForm.valid" type="submit" class="btn btn-primary text-uppercase">Submit</button>
+                          </div>
                         </form>
                     </div>
                 </div>
@@ -165,3 +144,4 @@
         </div>
     </div>
 </div>
+<app-snackbar></app-snackbar>

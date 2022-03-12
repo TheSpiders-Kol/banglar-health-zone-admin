@@ -6,12 +6,13 @@
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a routerLink="/home" class="breadcrumbStyle"><b>Home</b></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a routerLink="/manageHospital" class="breadcrumbStyle"><b>Manage Hospital</b></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><b>Add Hospital</b></li>
                       </ol>
                     </nav>
                     <div class="col-12 secondaryContainerBackground p-4">
                         <h1 class="h3 mb-4 mainHeader"><i class="fas fa-plus"></i> Add Hospital</h1>
-                        <form class="row g-3" [formGroup]="addHospitalForm" (ngSubmit)="formSubmit()">
+                        <form class="row g-3" [formGroup]="addHospitalForm" (ngSubmit)="initAddHospital()" *ngIf="fetchedHealthList">
                             <div class="col-md-6">
                               <label for="inputHospitalName" class="form-label">Hospital Name</label>
                               <input [class.is-invalid]="name.invalid && name.touched" type="text" formControlName="name" class="form-control" id="inputHospitalName" placeholder="Enter hospital name">
@@ -43,29 +44,29 @@
                             <div class="col-md-6">
                               <label for="inputDistrict" class="form-label">Select District</label>
                               <select [class.is-invalid]="district.invalid && district.touched" id="inputDistrict" class="form-select" formControlName="district">
-                                <option>Alipurduar</option>
-                                <option>Bankura</option>
-                                <option>Birbhum</option>
-                                <option>Cooch Behar</option>
-                                <option>Dakshin Dinajpur</option>
-                                <option>Darjeeling</option>
-                                <option>Hooghly</option>
-                                <option>Howrah</option>
-                                <option>Jalpaiguri</option>
-                                <option>Jhargram</option>
-                                <option>Kalimpong</option>
-                                <option>Kolkata</option>
-                                <option>Malda</option>
-                                <option>Murshidabad</option>
-                                <option>Nadia</option>
-                                <option>North 24 Parganas</option>
-                                <option>Paschim Medinipur</option>
-                                <option>Paschim Burdwan</option>
-                                <option>Purba Burdwan</option>
-                                <option>Purba Medinipur</option>
-                                <option>Purulia</option>
-                                <option>South 24 Parganas</option>
-                                <option>Uttar Dinajpur</option>
+                                <option value="AD">Alipurduar</option>
+                                <option value="BN">Bankura</option>
+                                <option value="BI">Birbhum</option>
+                                <option value="KB">Cooch Behar</option>
+                                <option value="DD">Dakshin Dinajpur</option>
+                                <option value="DA">Darjeeling</option>
+                                <option value="HG">Hooghly</option>
+                                <option value="HR">Howrah</option>
+                                <option value="JP">Jalpaiguri</option>
+                                <option value="JH">Jhargram</option>
+                                <option value="KA">Kalimpong</option>
+                                <option value="KO">Kolkata</option>
+                                <option value="MA">Malda</option>
+                                <option value="MU">Murshidabad</option>
+                                <option value="NA">Nadia</option>
+                                <option value="PN">North 24 Parganas</option>
+                                <option value="ME">Paschim Medinipur</option>
+                                <option value="BR">Paschim Burdwan</option>
+                                <option value="BRE">Purba Burdwan</option>
+                                <option value="MEE">Purba Medinipur</option>
+                                <option value="PU">Purulia</option>
+                                <option value="PS">South 24 Parganas</option>
+                                <option value="UD">Uttar Dinajpur</option>
                               </select>
                               <div *ngIf="district.invalid && district.touched">
                                 <small *ngIf="district.errors?.['required']" class="text-danger">You must select district</small>
@@ -73,64 +74,89 @@
                             </div>
                             <div class="col-md-6">
                               <label for="inputPinCode" class="form-label">Pin Code</label>
-                              <input [class.is-invalid]="districtCode.invalid && districtCode.touched" type="text" formControlName="districtCode" class="form-control" id="inputPinCode" placeholder="Enter pin code">
-                              <div *ngIf="districtCode.invalid && districtCode.touched">
-                                <small *ngIf="districtCode.errors?.['required']" class="text-danger">Pincode is required</small>
+                              <input [class.is-invalid]="pin.invalid && pin.touched" type="text" formControlName="pin" class="form-control" id="inputPinCode" placeholder="Enter pin code">
+                              <div *ngIf="pin.invalid && pin.touched">
+                                <small *ngIf="pin.errors?.['required']" class="text-danger">Pincode is required</small>
                               </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <label for="inputHouseDoctors" class="form-label">House Doctors</label>
-                                <input [class.is-invalid]="noOfHouseDoctors.invalid && noOfHouseDoctors.touched" type="number" formControlName="noOfHouseDoctors" class="form-control" id="inputHouseDoctors" placeholder="Enter number of house doctors">
+                                <input [class.is-invalid]="noOfHouseDoctors.invalid && noOfHouseDoctors.touched" type="number" formControlName="noOfHouseDoctors" class="form-control" id="inputHouseDoctors" placeholder="Number">
                                 <div *ngIf="noOfHouseDoctors.invalid && noOfHouseDoctors.touched">
                                     <small *ngIf="noOfHouseDoctors.errors?.['required']" class="text-danger">No of house doctors is required</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <label for="inputVisitingConsultant" class="form-label">Visiting Consulatnt</label>
-                                <input [class.is-invalid]="noOfVisitingConsultant.invalid && noOfVisitingConsultant.touched" type="number" formControlName="noOfVisitingConsultant" class="form-control" id="inputVisitingConsultant" placeholder="Enter number of visiting consultant">
+                                <input [class.is-invalid]="noOfVisitingConsultant.invalid && noOfVisitingConsultant.touched" type="number" formControlName="noOfVisitingConsultant" class="form-control" id="inputVisitingConsultant" placeholder="Number">
                                 <div *ngIf="noOfVisitingConsultant.invalid && noOfVisitingConsultant.touched">
                                     <small *ngIf="noOfVisitingConsultant.errors?.['required']" class="text-danger">No of visiting consultant is required</small>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <label for="inputBedStrength" class="form-label">Bed Strength</label>
-                                <input [class.is-invalid]="sanctionedBedStrength.invalid && sanctionedBedStrength.touched" type="number" formControlName="sanctionedBedStrength" class="form-control" id="inputBedStrength" placeholder="Enter sanctioned bed strength">
+                                <input [class.is-invalid]="sanctionedBedStrength.invalid && sanctionedBedStrength.touched" type="number" formControlName="sanctionedBedStrength" class="form-control" id="inputBedStrength" placeholder="Number">
                                 <div *ngIf="sanctionedBedStrength.invalid && sanctionedBedStrength.touched">
                                     <small *ngIf="sanctionedBedStrength.errors?.['required']" class="text-danger">Sanctioned bed strength is required</small>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-secondary btn-sm my-2" (click)="addMoreServices()"><i class="fas fa-plus"></i> Add Hospital Service</button>
-                                <div formArrayName="services" *ngFor="let service of services.controls; let i=index">
-                                    <input type="text" class="form-control my-1" [formControlName]="i" placeholder="Enter hospital service">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button type="button" class="btn btn-secondary btn-sm my-2" (click)="addSupportedInsurance()"><i class="fas fa-plus"></i> Add Supported Insurance Company</button>
-                                <div formArrayName="supportedInsurance" *ngFor="let insurance of supportedInsurance.controls; let i=index">
-                                    <input type="text" class="form-control my-1" [formControlName]="i" placeholder="Enter supported insurance companies">
-                                </div>
+                            <div class="col-md-2">
+                              <div class="form-check">
+                                <label class="form-check-label" for="typeOfHospital">
+                                  Type of Hospital*
+                                </label>
+                                <select id="inputDistrict" class="form-select" formControlName="typeOfHospital">
+                                  <option value="Private">Private</option>
+                                  <option value="Government">Government</option>
+                                </select>
+                              </div>
                             </div>
                             <div class="col-md-2">
                               <div class="form-check">
-                                <input formControlName="active" class="form-check-input" type="checkbox" id="activeCheck">
                                 <label class="form-check-label" for="activeCheck">
                                   Active
                                 </label>
+                                <input formControlName="active" class="form-check-input" type="checkbox" id="activeCheck">
                               </div>
                             </div>
-                            <div class="col-md-10">
+                            <div class="col-md-2">
                                 <div class="form-check">
-                                  <input formControlName="coronaHospital" class="form-check-input" type="checkbox" id="coronaCheck">
                                   <label class="form-check-label" for="coronaCheck">
                                     Corona Treatment Available
                                   </label>
+                                  <input formControlName="coronaHospital" class="form-check-input" type="checkbox" id="coronaCheck">
                                 </div>
                             </div>
-                            <div class="col-12">
-                              <button [disabled]="!addHospitalForm.valid" type="submit" class="btn btn-primary text-uppercase">Submit</button>
-                              <button type="reset" class="btn btn-secondary ms-2" (click)="onClear()">CLEAR</button>
+                          <label class="form-check-label" for="healthServices">
+                            Select Health Services
+                          </label>
+                          <span class="col-4 border border-primary">
+                            <div class="dual-list-wrapper overflow-auto" style="height: 100px;" >
+                                <ul class="list-group list-group-flush">
+                                  <li *ngFor="let hl of healthServices; let i=index">
+                                    <input class="form-check-input" type="checkbox" id="healthService" [value]="hl.$id" (change)="selectedHl(hl.$id,hl.$name,$event)">
+                                    {{hl.$name}}
+                                  </li>
+                                </ul>
                             </div>
+                          </span>
+                          <label class="form-check-label" for="insurance">
+                            Select Insurance
+                          </label>
+                          <span class="col-4 border border-primary">
+                            <div class="dual-list-wrapper overflow-auto" style="height: 100px;" >
+                                <ul class="list-group list-group-flush">
+                                  <li *ngFor="let ins of insuranceList; let i=index">
+                                    <input class="form-check-input" type="checkbox" id="healthService" [value]="ins.$id" (change)="selectedInsurance(ins.$id,ins.$company,$event)">
+                                    {{ins.$company}}
+                                  </li>
+                                </ul>
+                            </div>
+                          </span>
+                          <div class="col-12">
+                            <button [disabled]="!addHospitalForm.valid" type="submit" class="btn btn-primary text-uppercase">Submit</button>
+                            <button type="reset" class="btn btn-secondary ms-2" (click)="onClear()">CLEAR</button>
+                          </div>
                         </form>
                     </div>
                 </div>
@@ -138,3 +164,4 @@
         </div>
     </div>
 </div>
+<app-snackbar></app-snackbar>

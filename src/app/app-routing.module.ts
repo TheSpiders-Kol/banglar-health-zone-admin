@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'insuranceCompanies', component: InsuranceCompaniesComponent},
   { path: 'editHealthService', component: EditHealthServiceComponent},
   { path: 'editInsuranceCompany', component: EditInsuranceCompanyComponent},
-  { path: 'editUser', component: EditUserComponent}
+  { path: 'editUser', component: EditUserComponent},
 ];
 
 @NgModule({
