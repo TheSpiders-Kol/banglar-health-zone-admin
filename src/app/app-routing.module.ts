@@ -12,6 +12,7 @@ import { EditHealthServiceComponent } from './edit-health-service/edit-health-se
 import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { HomeComponent } from './home/home.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'editHealthService', component: EditHealthServiceComponent},
   { path: 'editInsuranceCompany', component: EditInsuranceCompanyComponent},
   { path: 'editUser', component: EditUserComponent},
+  { path: 'privacyPolicy', component: PrivacyPolicyComponent},
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientModule } from '@angular/common/http';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +18,8 @@ import { InsuranceCompaniesComponent } from './insurance-companies/insurance-com
 import { EditHealthServiceComponent } from './edit-health-service/edit-health-service.component';
 import { EditInsuranceCompanyComponent } from './edit-insurance-company/edit-insurance-company.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
 import { Snackbar } from './snackbar/snackbar.component';
 import { HomeComponent } from './home/home.component';
 import { TokenRefreshService } from './services/token-refresh.service';
@@ -38,6 +41,7 @@ import { FormsModule } from '@angular/forms';
     EditHealthServiceComponent,
     EditInsuranceCompanyComponent,
     EditUserComponent,
+    PrivacyPolicyComponent,
     Snackbar,
     HomeComponent,
   ],
